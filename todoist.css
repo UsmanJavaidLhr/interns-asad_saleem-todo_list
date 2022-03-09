@@ -1,0 +1,186 @@
+
+  .myclass1 {
+      text-align: center;
+      color: blue;
+    }
+
+.signUpButtonHome1{
+    background-color: blue;
+	border: 2px solid blue;
+	border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    display: block;
+	font-family: inherit;
+    font-size: 16px;
+	padding: 10px;
+	margin-top:auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+.logInButtonHome1{
+    background-color: blue;
+	border: 2px solid blue;
+	border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    display: block;
+	font-family: inherit;
+    font-size: 16px;
+	padding: 10px;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: auto
+}
+    .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }   
+    .login-box {
+        text-align: center;
+        width: 360px;
+        height: auto;
+        margin: auto;
+        border-radius: 20px;
+        background-color: lightblue;
+}
+.login-box input {
+	border: 2px solid #f0f0f0;
+	display: block;
+	font-family: inherit;
+	font-size: 10px;
+	padding: 10px;
+	width: 100%;
+}
+.login-box button {
+    	background-color: blue;
+	border: 2px solid blue;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+
+}
+    .signup-box {
+    text-align: center;
+    width: 360px;
+    height: auto;
+    margin: auto;
+    background-color: lightblue;
+    border-radius: 20px;
+    }
+.form-control {
+    text-align: left;
+    background-color: lightblue;
+    margin: auto;
+    width: auto;
+    }
+
+.form {
+	padding: 30px 40px;	
+}
+
+.form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.form-control input {
+	border: 2px solid #f0f0f0;
+	display: block;
+	font-family: inherit;
+	font-size: 10px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
+}
+    .form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+}
+.form-button {
+	background-color: blue;
+	border: 2px solid blue;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+.password-cheak::after{
+    content: "";
+}
+.passwordCheck{
+    display: flex;
+    color: gray;
+    font-weight: bold;
+}
+    
+.success {
+        background-color: green;
+        color: white;
+        text-align: center;
+        border: 20px;
+        border-radius: 4px;
+        display: block;
+        width: auto;
+        margin-left: 300px;
+        margin-right: 300px;
+    }
+    .table , th, td, tr{
+        width:700px;
+          border: 1px solid black;
+          text-align:center;
+        }
+        b {
+          font-size: 40px;color:black   
+        }     
+
+        .massage2{
+            border: 20px;
+            border-radius: 4px;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+        .view-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            border: 5px;
+            border-radius: 3px;
+        }
+        .remove-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            border: 5px;
+            border-radius: 3px;
+        }
+        .create-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            width: 25%;
+            border: 5px;
+            border-radius: 3px;
+        }
+        
