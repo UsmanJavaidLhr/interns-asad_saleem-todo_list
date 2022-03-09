@@ -1,5 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     homePage();
+
+    // localStorage.setItem('asadsaleem445@gmail.com', JSON.stringify(userData))
+    // listName = (JSON.parse(localStorage.getItem(userData)))
+    // let dashtable = document.getElementById('dash-table')
+    // let row = document.createElement('tr')
+    // let col1 = document.createElement('td')
+    // col1.innerText = '2'
+    // row.appendChild(col1)
+    // console.log(col1)
+    // let col2 = document.createElement('td')
+    // col2.innerText = 'My First List'
+    // row.appendChild(col2)
+    // console.log(col2)
+    // let col3 = document.createElement('td')
+    // row.appendChild(col3)
+    // var x = document.createElement("BUTTON");
+    // var y = document.createTextNode("Edit");
+    // var z1 = document.createElement("BUTTON");
+    // var z = document.createTextNode("Remove");
+
+    // x.appendChild(y);
+    // z1.appendChild(z);
+    // document.body.appendChild(x);
+    // document.body.appendChild(z1);
+    // console.log(col3)
+    // dashtable.appendChild(row)
+    // console.log(row.innerHTML)
 })
 
 function homePage() {
@@ -195,13 +222,8 @@ function logInPage() {
     logInFormButton.addEventListener('click', (e) => {
         e.preventDefault();
         console.log('logInFormButton Pressed')
-        console.log(cheakinputs())
+        login(email1.value, password1.value);
     });
-    function cheakinputs() {
-        const email1Val = email1.value;
-        const password1Val = password1.value;
-        return [email1Val, password1Val]
-    }
 }
 
 function hideAllContainers() {
@@ -220,41 +242,51 @@ function showNotice(msg, duration) {
         notice.classList.add('d-none')
     }, duration)
 }
-function login() {
-    var email = document.getElementById('email1').value;
-    var password = document.getElementById('password1').value;
-
+function login(email, password) {
+    console.log(email)
     var userData = localStorage.getItem(email);
-    var userData = JSON.parse(userData);
     console.log(userData)
-    if (userData && password == userData.password) {
+    userData = JSON.parse(userData);
+    console.log(userData, userData != null && password == userData.password)
+    if (userData != null && password == userData.password) {
         showNotice('User signed in successfully!', 10000)
+        hideAllContainers();
+        dashboardPage(userData);
     } else {
         alert("email or password is incorrect")
     }
-    logInFormButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        hideAllContainers();
-        dashboardPage(userData);
-    })
+
+
 
 }
+
 function dashboardPage(userData) {
     let dashboard = document.getElementById('dashboard-page')
     dashboard.classList.remove('d-none')
+    console.log("lists", userData.lists)
     if (userData.lists != undefined && userData.lists.length > 0) {
         let dashboardTable = document.getElementById('dash-table')
         dashboardTable.classList.remove('d-none')
+        for (const list in userData.lists) {
+            let row = document.createElement('tr')
+            let col1 = document.createElement('td')
+            col1.innerText = list + 1
+            row.appendChild(col1)
+            let col2 = document.createElement('td')
+            col2.innerText = userData.lists[list].name;
+            row.appendChild(col2)
+            console.log(col2)
+            let col3 = document.createElement('td')
+            row.appendChild(col3)
+            dashboardTable.appendChild(row)
+
+        }
     } else {
         let dashMessage = document.getElementById('dash-message')
         dashMessage.classList.remove('d-none')
 
     }
-
-
-
 }
-
 userData = {
     'first_name': 'Asad',
     'last_name': 'Saleem',
@@ -264,7 +296,37 @@ userData = {
             'name': 'My First List',
             'tasks': [
                 {
-                    'description': 'My first task',
+                    'desc': 'Do this and that and everything in between',
+                    'status': 0
+                },
+                {
+                    'desc': 'Do one more thing',
+                    'status': 1
+                }
+            ]
+        },
+        {
+            'name': 'My Second List',
+            'tasks': [
+                {
+                    'desc': 'Take your car to car wash',
+                    'status': 0
+                },
+                {
+                    'desc': 'Wash cloths',
+                    'status': 1
+                }
+            ]
+        },
+        {
+            'name': 'My Thrid List',
+            'tasks': [
+                {
+                    'desc': 'Take the dog for a walk',
+                    'status': 1
+                },
+                {
+                    'desc': 'Get some rest',
                     'status': 0
                 }
             ]
