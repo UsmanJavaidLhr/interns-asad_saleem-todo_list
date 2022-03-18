@@ -183,4 +183,32 @@
             border: 5px;
             border-radius: 3px;
         }
+        .add-new-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            width: auto;
+            border: 5px;
+            border-radius: 3px;
+        }
+        .save-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            width: auto;
+            border: 5px;
+            border-radius: 3px;
+        }
+        .userDashboard-button {
+            text-align: center;
+            display: block;
+            background-color: lightblue;
+            color: blue;
+            width: auto;
+            border: 5px;
+            border-radius: 3px;
+        }
+        
         

@@ -98,7 +98,7 @@
             </p>
     </form>
     </div>
-    <div id="dashboard-page" class="d-none ">
+    <div id="dashboard-page" class="d-none">
         <h3 class="text-center" id="dash-text"> Dashboard</h3>
         <h4 id="dash-message" class="massage2 d-none"> You currently do not have any list. Create one now!</h4>
         <table id="dash-table" class="d-none">
@@ -112,14 +112,36 @@
             <tr>
                 <td></td>
                 <td></td>
-                <!-- <td><button class="edit-button">Edit</button>
-                    <button class="remove-button">Remove</button>
-                </td> -->
+                <td><button class="edit-button" id="edit-button">Edit</button>
+                    <button class="remove-button" id="remove-button">Remove</button>
+                </td>
             </tr>
         </table>
         <br>
-        <button class="create-button">Create New List</button>
+        <button class="create-button" onclick="listPage()">Create New List</button>
     </div>
+    <div id="list-page" class="d-none">
+        <h3 id="list-header" class="text-center"> <input type="text" value="" placeholder="Enter list name here">
+            </input> <a href="#">Edit</a> </h3>
+        <table id="list-table" class="">
+            <tr>
+                <b>
+                    <th class="sr-number1"> Sr.#</th>
+                    <th class="task-names" id="task-names">Task Description</th>
+                    <th class="status">Status</th>
+                </b>
+            </tr>
+            <tr>
+                <td>Task 1</td>
+                <td><input type="text" value="" placeholder="Enter task description here"> </input></td>
+                <td><button class="done-button">Done</button></td>
+            </tr>
+        </table>
+        <button id="addNewTaskButton" class="add-new-button">Add New Task</button>
+        <br>
+        <button class="save-button">Save</button>
+        <br>
+        <button class="userDashboard-button" onclick="dashboardPage()">User Dashboard</button>
 </body>
 
 

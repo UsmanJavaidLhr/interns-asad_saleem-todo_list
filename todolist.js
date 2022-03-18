@@ -202,7 +202,8 @@ function signUp() {
     var userData = {
         "first_name": firstName,
         "last_name": lastName,
-        "password": password
+        "password": password,
+        "lists": []
     }
 
     localStorage.setItem(email, JSON.stringify(userData))
@@ -259,7 +260,6 @@ function login(email, password) {
 
 
 }
-
 function dashboardPage(userData) {
     let dashboard = document.getElementById('dashboard-page')
     dashboard.classList.remove('d-none')
@@ -279,6 +279,16 @@ function dashboardPage(userData) {
             let col3 = document.createElement('td')
             row.appendChild(col3)
             dashboardTable.appendChild(row)
+            dashboardTable.addEventListener('click', (Event) => {
+                if (Event.target.tagName === 'BUTTON') {
+                    const button = Event.target;
+                    const td = button.parentNode;
+                    const dashboardTable = td.parentNode;
+                    if (button.textcontent === 'remove') {
+                        dashboardTable.removeChild(td);
+                    }
+                }
+            })
 
         }
     } else {
@@ -287,6 +297,56 @@ function dashboardPage(userData) {
 
     }
 }
+function listPage(userData) {
+    let taskCount = 0;
+    let listsOfPage = document.getElementById('list-page')
+    listsOfPage.classList.remove('d-none')
+    // // if (userData.lists != undefined && userData.lists.length > 0) {
+    // let listTable = document.getElementById('list-table')
+    // listTable.classList.remove('d-none')
+    // for (const list in userData.lists) {
+    //     let row = document.createElement('tr')
+    //     let col1 = document.createElement('td')
+    //     col1.innerText = list + 1
+    //     row.appendChild(col1)
+    //     let col2 = document.createElement('td')
+    //     col2.innerText = userData.lists[list].name;
+    //     row.appendChild(col2)
+    //     console.log(col2)
+    //     let col3 = document.createElement('td')
+    //     row.appendChild(col3)
+    //     listTable.appendChild(row)
+    //     listTable.addEventListener('click', (Event) => {
+    //         if (Event.target.tagName === 'BUTTON') {
+    //             const button = Event.target;
+    //             const td = button.parentNode;
+    //             const listTable = td.parentNode;
+    //             if (button.textcontent === 'remove') {
+    //                 listTable.removeChild(td);
+    //             }
+    //         }
+    //     })
+    // }
+    // // }
+    const addNewTaskButton = document.querySelector("#addNewTaskButton");
+    addNewTaskButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        taskCount++;
+        let row = document.createElement('tr')
+        let col1 = document.createElement('td')
+        col1.innerText = taskCount + 1
+        row.appendChild(col1)
+        let col2 = document.createElement('td')
+        col2.innerText = userData;
+        row.appendChild(col2)
+        console.log(col2)
+        let col3 = document.createElement('td')
+        row.appendChild(col3)
+        row.appendChild(row)
+
+    });
+}
+
 userData = {
     'first_name': 'Asad',
     'last_name': 'Saleem',
