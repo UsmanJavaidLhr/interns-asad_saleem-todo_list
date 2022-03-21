@@ -203,7 +203,7 @@ function signUp() {
         "first_name": firstName,
         "last_name": lastName,
         "password": password,
-        "lists": []
+        "list": []
     }
 
     localStorage.setItem(email, JSON.stringify(userData))
@@ -252,7 +252,7 @@ function login(email, password) {
     if (userData != null && password == userData.password) {
         showNotice('User signed in successfully!', 10000)
         hideAllContainers();
-        dashboardPage(userData);
+        dashboardPage(email, userData);
     } else {
         alert("email or password is incorrect")
     }
@@ -260,10 +260,10 @@ function login(email, password) {
 
 
 }
-function dashboardPage(userData) {
+function dashboardPage(email, userData) {
+    hideAllContainers();
     let dashboard = document.getElementById('dashboard-page')
     dashboard.classList.remove('d-none')
-    console.log("lists", userData.lists)
     if (userData.lists != undefined && userData.lists.length > 0) {
         let dashboardTable = document.getElementById('dash-table')
         dashboardTable.classList.remove('d-none')
@@ -275,7 +275,6 @@ function dashboardPage(userData) {
             let col2 = document.createElement('td')
             col2.innerText = userData.lists[list].name;
             row.appendChild(col2)
-            console.log(col2)
             let col3 = document.createElement('td')
             row.appendChild(col3)
             dashboardTable.appendChild(row)
@@ -296,57 +295,58 @@ function dashboardPage(userData) {
         dashMessage.classList.remove('d-none')
 
     }
+    createNewListButton = document.getElementById('createButton')
+    createNewListButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        listPage(email, userData);
+    })
 }
-function listPage(userData) {
+function listPage(email, userData) {
+    hideAllContainers();
     let taskCount = 0;
     let listsOfPage = document.getElementById('list-page')
     listsOfPage.classList.remove('d-none')
-    // // if (userData.lists != undefined && userData.lists.length > 0) {
-    // let listTable = document.getElementById('list-table')
-    // listTable.classList.remove('d-none')
-    // for (const list in userData.lists) {
-    //     let row = document.createElement('tr')
-    //     let col1 = document.createElement('td')
-    //     col1.innerText = list + 1
-    //     row.appendChild(col1)
-    //     let col2 = document.createElement('td')
-    //     col2.innerText = userData.lists[list].name;
-    //     row.appendChild(col2)
-    //     console.log(col2)
-    //     let col3 = document.createElement('td')
-    //     row.appendChild(col3)
-    //     listTable.appendChild(row)
-    //     listTable.addEventListener('click', (Event) => {
-    //         if (Event.target.tagName === 'BUTTON') {
-    //             const button = Event.target;
-    //             const td = button.parentNode;
-    //             const listTable = td.parentNode;
-    //             if (button.textcontent === 'remove') {
-    //                 listTable.removeChild(td);
-    //             }
-    //         }
-    //     })
-    // }
-    // // }
     const addNewTaskButton = document.querySelector("#addNewTaskButton");
     addNewTaskButton.addEventListener("click", (e) => {
         e.preventDefault();
-        taskCount++;
+        let table = document.getElementById('list-table')
         let row = document.createElement('tr')
         let col1 = document.createElement('td')
-        col1.innerText = taskCount + 1
+        taskCount++
+        col1.innerText = `Task ${taskCount}`
         row.appendChild(col1)
         let col2 = document.createElement('td')
-        col2.innerText = userData;
+        let input = document.createElement('input')
+        input.type = 'text';
+        input.placeholder = 'Enter task description here';
+        input.class = 'task-description'
+        col2.appendChild(input)
         row.appendChild(col2)
-        console.log(col2)
         let col3 = document.createElement('td')
+        let input2 = document.createElement('input')
+        input2.type = 'checkbox'
+        col3.appendChild(input2)
         row.appendChild(col3)
-        row.appendChild(row)
+        table.appendChild(row)
+    })
+    let saveButton = document.getElementById("saveButton")
+    saveButton.addEventListener('click', (e) => {
+        e.preventDefault();
 
-    });
+        let listName = document.querySelector('#list-header').value
+        let tasks = document.querySelectorAll('.task-description') // []
+        userData.lists ||= []
+        let list = {
+            'name': listName,
+            'tasks': []
+        }
+        for (let task of tasks) {
+            list.tasks.push(task)
+        }
+        userData.lists.push(list)
+        localStorage.setItem(email, JSON.stringify(userData))
+    })
 }
-
 userData = {
     'first_name': 'Asad',
     'last_name': 'Saleem',
@@ -393,3 +393,4 @@ userData = {
         }
     ]
 }
+// localStorage.setItem('asadsaleem445@gmail.com', JSON.stringify(userData))
